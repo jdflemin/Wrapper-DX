@@ -1,0 +1,26 @@
+{
+  "name": "RadialSparkDX",
+  "version": "1.0.0",
+  "description": "Node app for interacting with SFDX",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdflemin/RadialSparkDX.git"
+  },
+  "dependencies": {
+    "yargs": "11.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdflemin/RadialSparkDX/issues"
+  },
+  "homepage": "https://github.com/jdflemin/RadialSparkDX#readme",
+  "bin": {
+    "rsdx": "./index.js"
+  }
+}
