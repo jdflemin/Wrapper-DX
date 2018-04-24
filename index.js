@@ -11,6 +11,9 @@ const argv = require('yargs')
   .version()
   .usage('rsdx <command> [options]')
   .command(['init [dir]', 'initialize', 'i'], 'Initialize the directory', require('./lib/init'))
+  
+  .command('firstName [name]', 'desc of name', require('./lib/printName'))
+  .command('get', 'make a get HTTP request', {url : {alias: 'u', default: 'http://yargs.js.org/'}})
   .example('rsdx init my-project', 'Initialize `my-project` directory with `default` engine')
   .example('rsdx init my-project --engine turbo', 'Initialize `my-project` directory with `turbo` engine')
   .command(['docs'], 'Go to the documentation at https://zaiste.net', {}, _ => open('https://zaiste.net'))
@@ -20,7 +23,12 @@ const argv = require('yargs')
   .epilogue('for more information, find the documentation at https://zaiste.net')
   .argv;
 
-
+  console.log('argv._');
+  console.log(argv._);
+  console.log('argv.$0');
+  console.log(argv.$0);
+  console.log('argv.verbose');
+  console.log(argv.verbose);
 /*
 routing logic based on flags
 call other modules from here
