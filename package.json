@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "open": "0.0.5",
+    "sfdx-cli": "^6.12.0",
     "yargs": "11.0.0"
   },
   "keywords": [],
