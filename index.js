@@ -11,7 +11,6 @@ const argv = require('yargs')
   .version()
   .usage('rsdx <command> [options]')
   .command(['init [dir]', 'initialize', 'i'], 'Initialize the directory', require('./commandModules/init'))
-  
   .command('firstName [name]', 'desc of name', require('./commandModules/printName'))
   .command('get', 'make a get HTTP request', {url : {alias: 'u', default: 'http://yargs.js.org/'}})
   .example('rsdx init my-project', 'Initialize `my-project` directory with `default` engine')
@@ -21,12 +20,12 @@ const argv = require('yargs')
   .alias('h', 'help')
   .argv;
 
-  // console.log('argv._');
-  // console.log(argv._);
-  // console.log('argv.$0');
-  // console.log(argv.$0);
-  // console.log('argv.verbose');
-  // console.log(argv.verbose);
+  console.log('length: ', argv._.length);
+  console.log('argv._: ', argv._);
+  console.log('argv.$0: ', argv.$0);
+  console.log('argv.verbose: ', argv.verbose);
+  console.log('argv: ', argv);
+
 /*
 routing logic based on flags
 call other modules from here
