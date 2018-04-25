@@ -23,12 +23,12 @@ const argv = require('yargs')
   .epilogue('for more information, find the documentation at https://zaiste.net')
   .argv;
 
-  console.log('argv._');
-  console.log(argv._);
-  console.log('argv.$0');
-  console.log(argv.$0);
-  console.log('argv.verbose');
-  console.log(argv.verbose);
+  // console.log('argv._');
+  // console.log(argv._);
+  // console.log('argv.$0');
+  // console.log(argv.$0);
+  // console.log('argv.verbose');
+  // console.log(argv.verbose);
 /*
 routing logic based on flags
 call other modules from here
