@@ -1,6 +1,9 @@
 function printName({name}) {
     console.log('printName function runs ' + name);
-    let temp = 'list';
+    
+    console.log(argv._);
+    
+    /*let temp = 'list';
     var exec = require('child_process').exec;
     exec(`sfdx force:org:${temp}`, (err, stdout, stderr) => {
       if (err) {
@@ -11,7 +14,7 @@ function printName({name}) {
       // the *entire* stdout and stderr (buffered)
       console.log(`stdout: ${stdout}`);
       console.log(`stderr: ${stderr}`);
-    });
+    });*/
 
 
     // var cmdString = 'sfdx force:org:list';
