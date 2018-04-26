@@ -1,22 +1,28 @@
-var sOrg = require('./create/sOrg.js');
+// all required create modules
+let scratchOrg = require('./create/scratchOrg.js');
 
+/**
+ * @description logic to determine what we are going to create
+ * @method create
+ * @param {object} argv 
+ */
 function create(argv) {
-    console.log(argv._);
-
-    var whatToCreate = argv._[1];
-    var arguments = argv._.slice(2);
-
+    // cleans user input to allow case insensitivity 
+    let whatToCreate = argv._[1].toUpperCase();
+    let arguments = argv._.slice(2);
+console.log('hi')
     switch(whatToCreate) {
-        case 'sOrg':
-            sOrg.handler(arguments);
+        case ('SORG'):
+            scratchOrg.handler(arguments);
             break;
         default:
-            console.log("DEFAULT");
+            console.log("DEFAULT STUFF CHANGE LATER");
             break;
     }
 
 }
-  
+
+// export module to index.js and allow args to be accessed in this file
 module.exports = {
     handler: create,
     builder: _ => _
