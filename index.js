@@ -1,31 +1,48 @@
 #!/usr/bin/env node
 
-/**
- * @description router for commands after rsdx is called in terminal
- */
-const argv = require('yargs')
-  // .usage('init <command>')
-  //.command('login')
-  // way to normalize user input????????
-  .command('create', 'create command', require('./commandModules/create.js'))
-  .command('delete')
-  .command('list')
-  .argv
+// ensure we are in a sfdx project first
+let exec = require('child_process').exec; 
+exec('dir', (err, stdout, stderr) => {
+  if (stdout.includes('.forceignore')) {
+    followYargs();
+  } else {
+    console.log('Please navigate to your DX project and try again')
+  }
+});
   
 
+// console.log(process.platform);
+
 
 /**
- * Will keep for now as reference but will be deleted soon
+ * @description router for commands after rsdx is called in terminal
+ * @method followYargs
  */
-// const argv = require('yargs')
-//   .version()
-//   .usage('rsdx <command> [options]')
-//   .command(['init [dir]', 'initialize', 'i'], 'Initialize the directory', require('./commandModules/init'))
-//   .command('firstName [name]', 'desc of name', require('./commandModules/printName'))
-//   .command('get', 'make a get HTTP request', {url : {alias: 'u', default: 'http://yargs.js.org/'}})
-//   .example('rsdx init my-project', 'Initialize `my-project` directory with `default` engine')
-//   .example('rsdx init my-project --engine turbo', 'Initialize `my-project` directory with `turbo` engine')
-//   .demandCommand(1, 'You need at least one command before moving on')
-//   .help('h')
-//   .alias('h', 'help')
-//   .argv;
+function followYargs() {
+  const argv = require('yargs')
+  .usage('rsdx <command>')
+    .command('convert')
+    .command('create', 'create command', require('./commandModules/create.js'))
+    .command('delete')
+    .command('deploy')
+    .command('display')
+    .command('export')
+    .command('generate')
+    .command('get')
+    .command('import')
+    .command('install')
+    .command('list', 'use when a list is expected to be returned', require('./commandModules/list.js'))
+    .command('login')
+    .command('open')
+    .command('pull')
+    .command('push')
+    .command('query')
+    .command('report')
+    .command('retrieve')
+    .command('run')
+    .command('set')
+    .command('upgrade')
+  .help()
+  .argv
+}
+//"preinstall": "npm install --global sfdx-cli",

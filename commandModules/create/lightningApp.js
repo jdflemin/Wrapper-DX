@@ -1,14 +1,14 @@
 /**
  * @description creates scratch org
- * @method classCreateHandler
+ * @method lightningAppCreateHandler
  * @param {array} argv 
  */
-function classCreateHandler(argv) {
-    let baseCommand = 'sfdx force:apex:create:create';
+function lightningAppCreateHandler(argv) {
+    let baseCommand = 'sfdx force:lightning:app:create';
     const yargs = require('yargs')
-      .option('n', {alias: 'className', demandOption: true, desc: 'name of class'})
+      .option('n', {alias: 'name', demandOption: true, desc: 'name of lightning app'})
 
-    baseCommand += ` -n ${yargs.argv.n} -d force-app/main/default/class`;
+    baseCommand += ` -n ${yargs.argv.n} -d force-app/main/default/aura`;
 
     let exec = require('child_process').exec; 
 
@@ -25,5 +25,5 @@ function classCreateHandler(argv) {
 
 // export module
 module.exports = {
-    handler: classCreateHandler
+    handler: lightningAppCreateHandler
 };

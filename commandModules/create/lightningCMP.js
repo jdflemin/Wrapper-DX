@@ -1,14 +1,14 @@
 /**
  * @description creates scratch org
- * @method classCreateHandler
+ * @method lightningCmpCreateHandler
  * @param {array} argv 
  */
-function classCreateHandler(argv) {
-    let baseCommand = 'sfdx force:apex:create:create';
+function lightningCmpCreateHandler(argv) {
+    let baseCommand = 'sfdx force:lightning:component:create';
     const yargs = require('yargs')
-      .option('n', {alias: 'className', demandOption: true, desc: 'name of class'})
+      .option('n', {alias: 'name', demandOption: true, desc: 'name of lightning cmp'})
 
-    baseCommand += ` -n ${yargs.argv.n} -d force-app/main/default/class`;
+    baseCommand += ` -n ${yargs.argv.n} -d force-app/main/default/aura`;
 
     let exec = require('child_process').exec; 
 
@@ -25,5 +25,5 @@ function classCreateHandler(argv) {
 
 // export module
 module.exports = {
-    handler: classCreateHandler
+    handler: lightningCmpCreateHandler
 };
