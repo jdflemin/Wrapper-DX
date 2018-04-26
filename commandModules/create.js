@@ -1,19 +1,42 @@
-// all required create modules
-let scratchOrg = require('./create/scratchOrg.js');
-
 /**
  * @description logic to determine what we are going to create
  * @method create
  * @param {object} argv 
  */
 function create(argv) {
-    // cleans user input to allow case insensitivity 
-    let whatToCreate = argv._[1].toUpperCase();
+    // all required create modules
+    let scratchOrg = require('./create/scratchOrg.js');
+    let apexClass = require('./create/class.js');
+    let apexTrigger = require('./create/trigger.js');
+    let dxProject = require('./create/project.js');
+    let lightningApp = require('./create/lightningApp.js');
+    let lightningCMP = require('./create/lightningCMP.js');
+    let lightningEvent = require('./create/lightningEvent.js');
+    
+    let whatToCreate = argv._[1];
     let arguments = argv._.slice(2);
-console.log('hi')
+
     switch(whatToCreate) {
-        case ('SORG'):
+        case ('sOrg'):
             scratchOrg.handler(arguments);
+            break;
+        case ('class'):
+            apexClass.handler(arguments);
+            break;
+        case ('trigger'):
+            apexTrigger.handler(arguments);
+            break;
+        case ('dxProject'):
+            dxProject.handler(arguments);
+            break;
+        case ('lightningApp'):
+            lightningApp.handler(arguments);
+            break;
+        case ('lightningCMP'):
+            lightningCMP.handler(arguments);
+            break;
+        case ('lightningEvent'):
+            lightningEvent.handler(arguments);
             break;
         default:
             console.log("DEFAULT STUFF CHANGE LATER");

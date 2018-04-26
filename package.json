@@ -4,7 +4,6 @@
   "description": "Node app for interacting with SFDX",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npm install --global sfdx-cli",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
