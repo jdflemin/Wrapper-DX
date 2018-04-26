@@ -1,22 +1,22 @@
 #!/usr/bin/env node
 
-// console.log('hello world');
-
-// const args = process.argv;
-// console.log(args);
-
-const open = require('open');
-
+/**
+ * @description router for commands after rsdx is called in terminal
+ */
 const argv = require('yargs')
   // .usage('init <command>')
+  //.command('login')
+  // way to normalize user input????????
   .command('create', 'create command', require('./commandModules/create.js'))
   .command('delete')
   .command('list')
   .argv
+  
 
 
-
-
+/**
+ * Will keep for now as reference but will be deleted soon
+ */
 // const argv = require('yargs')
 //   .version()
 //   .usage('rsdx <command> [options]')
@@ -29,16 +29,3 @@ const argv = require('yargs')
 //   .help('h')
 //   .alias('h', 'help')
 //   .argv;
-
-  // console.log('length: ', argv._.length);
-  // console.log('argv._: ', argv._);
-  // console.log('argv.$0: ', argv.$0);
-  // console.log('argv.verbose: ', argv.verbose);
-  // console.log('argv: ', argv);
-
-/*
-routing logic based on flags
-call other modules from here
-this acts like a trigger
-*/
-
