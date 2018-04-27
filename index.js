@@ -18,20 +18,14 @@ exec(listDir, (err, stdout, stderr) => {
 /**
 1.2 – sfdx force:org:delete -u
 
-TEMPLATED 1.2 – sfdx force:org:open -u
-
 1.2 – sfdx force:mdapi:retrieve -s -r <file/path/toPlace> -u -p ‘’ (need to review all flags)
 
 1.2 – sfdx force:user:display
 1.2 – sfdx force:limits:api:display
 
-TEMPLATED 1.2 – sfdx force:package:install
-
-TEMPLATED 1.2 – sfdx force:config:set
-
 1.2 – sfdx force:user:password:generate
 
-1.2 – sfdx force:source:push
+TEMPLATED 1.2 – sfdx force:source:push
 
 1.2 – sfdx force:source:pull
  */
@@ -57,7 +51,7 @@ function followYargs() {
       .command('login')
       .command('open', 'Open command', require('./commandModules/open.js'))
       .command('pull')
-      .command('push')
+      .command('push', 'Push Command', require('./commandModules/push.js'))
       .command('query')
       .command('report')
       .command('retrieve')
