@@ -25,7 +25,7 @@ function followYargs() {
       .command('deploy')
       .command('display', 'Display command', require('./commandModules/display.js'))
       .command('export')
-      .command('generate')
+      .command('generate', 'Generate command', require('./commandModules/generate.js'))
       .command('get')
       .command('import')
       .command('install', 'Installs a package in the target org.', require('./commandModules/install.js'))
