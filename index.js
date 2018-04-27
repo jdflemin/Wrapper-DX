@@ -16,7 +16,6 @@ exec(listDir, (err, stdout, stderr) => {
 // console.log(process.platform);
 
 /**
-1.2 – sfdx force:org:delete -u
 
 1.2 – sfdx force:mdapi:retrieve -s -r <file/path/toPlace> -u -p ‘’ (need to review all flags)
 
@@ -25,9 +24,6 @@ exec(listDir, (err, stdout, stderr) => {
 
 1.2 – sfdx force:user:password:generate
 
-TEMPLATED 1.2 – sfdx force:source:push
-
-1.2 – sfdx force:source:pull
  */
 
 /**
@@ -39,7 +35,7 @@ function followYargs() {
     .usage('rsdx <command>')
       .command('convert')
       .command('create', 'create command', require('./commandModules/create.js'))
-      .command('delete')
+      .command('delete', 'Delete Command', require('./commandModules/delete.js'))
       .command('deploy')
       .command('display')
       .command('export')
