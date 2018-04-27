@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
+let platform = process.platform === 'win32' ? 'dir' : 'ls -a'
+
 // ensure we are in a sfdx project first
 let exec = require('child_process').exec; 
-exec('dir', (err, stdout, stderr) => {
+exec(platform, (err, stdout, stderr) => {
   if (stdout.includes('.forceignore')) {
     followYargs();
   } else {
@@ -18,11 +20,12 @@ exec('dir', (err, stdout, stderr) => {
  * @description router for commands after rsdx is called in terminal
  * @method followYargs
  */
+console.log('first')
 function followYargs() {
   const argv = require('yargs')
   .usage('rsdx <command>')
     .command('convert')
-    .command('create', 'create command', require('./commandModules/create.js'))
+    .command('create', 'create commands', require('./commandModules/create.js'))
     .command('delete')
     .command('deploy')
     .command('display')
