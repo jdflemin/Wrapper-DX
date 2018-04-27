@@ -15,7 +15,7 @@ function install(argv) {
             package.handler(arguments);
             break;
         default:
-            console.log("VALID OPTIONS: ");
+            console.log("VALID INSTALL OPTIONS: package");
             break;
     }
 

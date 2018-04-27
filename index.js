@@ -25,9 +25,9 @@ TEMPLATED 1.2 – sfdx force:org:open -u
 1.2 – sfdx force:user:display
 1.2 – sfdx force:limits:api:display
 
-1.2 – sfdx force:package:install
+TEMPLATED 1.2 – sfdx force:package:install
 
-1.2 – sfdx force:config:set
+TEMPLATED 1.2 – sfdx force:config:set
 
 1.2 – sfdx force:user:password:generate
 
@@ -55,14 +55,14 @@ function followYargs() {
       .command('install', 'Installs a package in the target org.', require('./commandModules/install.js'))
       .command('list', 'use when a list is expected to be returned', require('./commandModules/list.js'))
       .command('login')
-      .command('open', 'open command', require('./commandModules/open.js'))
+      .command('open', 'Open command', require('./commandModules/open.js'))
       .command('pull')
       .command('push')
       .command('query')
       .command('report')
       .command('retrieve')
       .command('run')
-      .command('set')
+      .command('set', 'Set command', require('./commandModules/set.js'))
       .command('upgrade')
     .help()
     .argv

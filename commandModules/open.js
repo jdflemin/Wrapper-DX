@@ -15,7 +15,7 @@ function open(argv) {
             scratchOrg.handler(arguments);
             break;
         default:
-            console.log("VALID OPTIONS: rsdx sorg -u <targetusername>");
+            console.log("VALID OPEN OPTIONS: sorg");
             break;
     }
 
