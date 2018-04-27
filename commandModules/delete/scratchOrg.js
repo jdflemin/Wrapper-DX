@@ -13,9 +13,10 @@ function scratchOrgDeleteHandler(argv) {
       .option('loglevel', {alias: 'loglevel', demandOption: false, desc: 'STRING: The logging level for this command invocation. Logs are stored in $HOME/.sfdx/sfdx.log. Permissible values are: trace, debug, info, warn, error, fatal. DEFAULT: error.'})
 
     Object.keys(options).map(opt => {
+        console.log(typeof yargs.argv[opt])
         if (yargs.argv[opt] === true) {
             baseCommand += ` --${options[opt]}`;
-        } else if (yargs.argv[opt] != null) {
+        } else if (yargs.argv[opt] != null && typeof yargs.argv[opt] != 'boolean') {
             baseCommand += ` -${opt} ${yargs.argv[opt]}`;
         }
     })
