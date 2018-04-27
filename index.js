@@ -50,7 +50,7 @@ function followYargs() {
       .command('list', 'use when a list is expected to be returned', require('./commandModules/list.js'))
       .command('login')
       .command('open', 'Open command', require('./commandModules/open.js'))
-      .command('pull')
+      .command('pull', 'Pull Command', require('./commandModules/pull.js'))
       .command('push', 'Push Command', require('./commandModules/push.js'))
       .command('query')
       .command('report')

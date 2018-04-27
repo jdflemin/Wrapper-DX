@@ -1,21 +1,21 @@
 /**
- * @description logic to determine what we are going to push
- * @method push
+ * @description logic to determine what we are going to pull
+ * @method pull
  * @param {object} argv 
  */
-function push(argv) {
+function pull(argv) {
     // all required open modules
-    let source = require('./push/source.js');
+    let source = require('./pull/source.js');
     
-    let whatToPush = argv._[1];
+    let whatToPull = argv._[1];
     let arguments = argv._.slice(2);
 
-    switch(whatToPush.toUpperCase()) {
+    switch(whatToPull.toUpperCase()) {
         case ('SOURCE'):
             source.handler(arguments);
             break;
         default:
-            console.log("VALID PUSH OPTIONS: source");
+            console.log("VALID PULL OPTIONS: source");
             break;
     }
 
@@ -23,7 +23,7 @@ function push(argv) {
 
 // export module to index.js and allow args to be accessed in this file
 module.exports = {
-    handler: push,
+    handler: pull,
     builder: _ => _
     .default('argv', require('../index.js'))
 };
