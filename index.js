@@ -16,7 +16,6 @@ exec(listDir, (err, stdout, stderr) => {
  * @description router for commands after rsdx is called in terminal
  * @method followYargs
  */
-console.log('first')
 function followYargs() {
   const argv = require('yargs')
     .usage('rsdx <command>')

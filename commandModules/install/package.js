@@ -20,7 +20,7 @@ function packageInstallHandler(argv) {
     Object.keys(options).map(opt => {
         if (yargs.argv[opt] === true) {
             baseCommand += ` --${options[opt]}`;
-        } else if (yargs.argv[opt] != null) {
+        } else if (yargs.argv[opt] != null && typeof yargs.argv[opt] != 'boolean') {
             baseCommand += ` -${opt} ${yargs.argv[opt]}`;
         }
     })
