@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
+const listDir = process.platform === 'win32' ? 'dir' : 'ls -a';
+
 // ensure we are in a sfdx project first
 let exec = require('child_process').exec; 
-exec('dir', (err, stdout, stderr) => {
+exec(listDir, (err, stdout, stderr) => {
   if (stdout.includes('.forceignore')) {
     followYargs();
   } else {
@@ -13,6 +15,26 @@ exec('dir', (err, stdout, stderr) => {
 
 // console.log(process.platform);
 
+/**
+1.2 – sfdx force:org:delete -u
+
+TEMPLATED 1.2 – sfdx force:org:open -u
+
+1.2 – sfdx force:mdapi:retrieve -s -r <file/path/toPlace> -u -p ‘’ (need to review all flags)
+
+1.2 – sfdx force:user:display
+1.2 – sfdx force:limits:api:display
+
+1.2 – sfdx force:package:install
+
+1.2 – sfdx force:config:set
+
+1.2 – sfdx force:user:password:generate
+
+1.2 – sfdx force:source:push
+
+1.2 – sfdx force:source:pull
+ */
 
 /**
  * @description router for commands after rsdx is called in terminal
@@ -33,9 +55,9 @@ function followYargs() {
     .command('install')
     .command('list', 'use when a list is expected to be returned', require('./commandModules/list.js'))
     .command('login')
-    .command('open')
+    .command('open', 'open command', require('./commandModules/open.js'))
     .command('pull')
-    .command('push')
+    .command('push', 'push changes to scratch org', require('./commandModules/push.js'))
     .command('query')
     .command('report')
     .command('retrieve')
