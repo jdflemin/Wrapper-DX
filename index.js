@@ -11,20 +11,6 @@ exec(listDir, (err, stdout, stderr) => {
     console.log('Please navigate to your DX project and try again')
   }
 });
- 
-
-// console.log(process.platform);
-
-/**
-
-1.2 – sfdx force:mdapi:retrieve -s -r <file/path/toPlace> -u -p ‘’ (need to review all flags)
-
-1.2 – sfdx force:user:display
-1.2 – sfdx force:limits:api:display
-
-1.2 – sfdx force:user:password:generate
-
- */
 
 /**
  * @description router for commands after rsdx is called in terminal
@@ -35,9 +21,9 @@ function followYargs() {
     .usage('rsdx <command>')
       .command('convert')
       .command('create', 'create command', require('./commandModules/create.js'))
-      .command('delete', 'Delete Command', require('./commandModules/delete.js'))
+      .command('delete', 'Delete command', require('./commandModules/delete.js'))
       .command('deploy')
-      .command('display')
+      .command('display', 'Display command', require('./commandModules/display.js'))
       .command('export')
       .command('generate')
       .command('get')
@@ -46,8 +32,8 @@ function followYargs() {
       .command('list', 'use when a list is expected to be returned', require('./commandModules/list.js'))
       .command('login')
       .command('open', 'Open command', require('./commandModules/open.js'))
-      .command('pull', 'Pull Command', require('./commandModules/pull.js'))
-      .command('push', 'Push Command', require('./commandModules/push.js'))
+      .command('pull', 'Pull command', require('./commandModules/pull.js'))
+      .command('push', 'Push command', require('./commandModules/push.js'))
       .command('query')
       .command('report')
       .command('retrieve')

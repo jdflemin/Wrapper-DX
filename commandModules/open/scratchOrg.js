@@ -9,13 +9,15 @@ function scratchOrgOpenHandler(argv) {
       .option('u', {alias: 'targetusername', demandOption: true, desc: 'STRING: A username or alias for the target org. Overrides the default target org.'})
       .option('p', {alias: 'path', demandOption: false, desc: 'STRING: Navigation URL path (not including domain).'})
       .option('r', {alias: 'urlonly', demandOption: false, desc: 'FLAG: Displays a navigation URL, but doesn’t launch your browser.'})
-      .option('json', {alias: 'json', demandOption: false, desc: 'FLAG: Format output as JSON.'})      
+      .option('j', {alias: 'json', demandOption: false, type:'boolean', desc: 'FLAG: Format output as JSON.'})      
       .option('loglevel', {alias: 'loglevel', demandOption: false, desc: 'STRING: The logging level for this command invocation. Logs are stored in $HOME/.sfdx/sfdx.log. Permissible values are: trace, debug, info, warn, error, fatal. DEFAULT: error.'})
 
-    const options = Object.keys(yargs.getOptions().alias);
+    const options = yargs.getOptions().alias;
 
-    options.map(opt => {
-        if (yargs.argv[opt] != null) {
+    Object.keys(options).map(opt => {
+        if (yargs.argv[opt] === true) {
+            baseCommand += ` --${options[opt]}`;
+        } else if (yargs.argv[opt] != null) {
             baseCommand += ` -${opt} ${yargs.argv[opt]}`;
         }
     })

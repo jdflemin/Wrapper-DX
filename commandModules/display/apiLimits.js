@@ -1,13 +1,13 @@
 /**
- * @description set config
- * @method setConfigHandler
+ * @description Displays remaining and maximum calls and events for your org.
+ * @method displayApiLimits
  * @param {array} argv 
  */
-function setConfigHandler(argv) {
-    let baseCommand = 'sfdx force:config:set';
+function displayApiLimits(argv) {
+    let baseCommand = 'sfdx force:limits:api:display';
     const yargs = require('yargs')
-        .option('g', {alias: 'global', demandOption: false, desc: 'FLAG: Sets the configuration variables globally, so they can be used from any directory.'})
-        .option('j', {alias: 'json', demandOption: false, type: 'boolean', desc: 'FLAG: Format output as JSON.'})
+        .option('u', {alias: 'targetusername', demandOption: true, desc: 'STRING: A username or alias for the target org. Overrides the default target org.'})
+        .option('j', {alias: 'json', demandOption: false, type: 'boolean', desc: 'BOOLEAN: Format output as JSON.'})
         .option('loglevel', {alias: 'loglevel', demandOption: false, desc: 'STRING: The logging level for this command invocation. Logs are stored in $HOME/.sfdx/sfdx.log. Permissible values are: trace, debug, info, warn, error, fatal. DEFAULT: error.'})
 
     const options = yargs.getOptions().alias;
@@ -37,5 +37,5 @@ function setConfigHandler(argv) {
 
 // export module
 module.exports = {
-    handler: setConfigHandler
+    handler: displayApiLimits
 };

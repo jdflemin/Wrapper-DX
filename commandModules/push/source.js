@@ -10,13 +10,15 @@ function pushSourceHandler(argv) {
         .option('f', {alias: 'forceoverwrite', demandOption: false, desc: 'FLAG: Runs the push command even if conflicts exist. Changes in the project overwrite changes in the scratch org.'})
         .option('g', {alias: 'ignorewarnings', demandOption: false, desc: 'FLAG: Completes the deployment even if warnings are generated.'})
         .option('w', {alias: 'wait', demandOption: false, desc: 'MINUTES:  Number of minutes to wait for the command to complete and display results to the terminal window. If the command continues to run after the wait period, the CLI returns control of the terminal window to you. The default is 33 minutes.'})
-        .option('json', {alias: 'json', demandOption: false, desc: 'FLAG: Format output as JSON.'})      
+        .option('j', {alias: 'json', demandOption: false, type: 'boolean', desc: 'FLAG: Format output as JSON.'})      
         .option('loglevel', {alias: 'loglevel', demandOption: false, desc: 'STRING: The logging level for this command invocation. Logs are stored in $HOME/.sfdx/sfdx.log. Permissible values are: trace, debug, info, warn, error, fatal. DEFAULT: error.'})
 
-    const options = Object.keys(yargs.getOptions().alias);
+    const options = yargs.getOptions().alias;
 
-    options.map(opt => {
-        if (yargs.argv[opt] != null) {
+    Object.keys(options).map(opt => {
+        if (yargs.argv[opt] === true) {
+            baseCommand += ` --${options[opt]}`;
+        } else if (yargs.argv[opt] != null) {
             baseCommand += ` -${opt} ${yargs.argv[opt]}`;
         }
     })

@@ -1,13 +1,14 @@
 /**
- * @description set config
- * @method setConfigHandler
+ * @description Displays information about a user of a scratch org that the Salesforce CLI has created or authenticated.
+ * @method displayUser
  * @param {array} argv 
  */
-function setConfigHandler(argv) {
-    let baseCommand = 'sfdx force:config:set';
+function displayUser(argv) {
+    let baseCommand = 'sfdx force:user:display';
     const yargs = require('yargs')
-        .option('g', {alias: 'global', demandOption: false, desc: 'FLAG: Sets the configuration variables globally, so they can be used from any directory.'})
-        .option('j', {alias: 'json', demandOption: false, type: 'boolean', desc: 'FLAG: Format output as JSON.'})
+        .option('u', {alias: 'targetusername', demandOption: true, desc: 'STRING: A username or alias for the target org. Overrides the default target org.'})
+        .option('v', {alias: 'targetdevhubusername', demandOption: false, desc: 'STRING: A username or alias for the target Dev Hub org. Overrides the default Dev Hub org.'})        
+        .option('j', {alias: 'json', demandOption: false, type: 'boolean', desc: 'BOOLEAN: Format output as JSON.'})
         .option('loglevel', {alias: 'loglevel', demandOption: false, desc: 'STRING: The logging level for this command invocation. Logs are stored in $HOME/.sfdx/sfdx.log. Permissible values are: trace, debug, info, warn, error, fatal. DEFAULT: error.'})
 
     const options = yargs.getOptions().alias;
@@ -37,5 +38,5 @@ function setConfigHandler(argv) {
 
 // export module
 module.exports = {
-    handler: setConfigHandler
+    handler: displayUser
 };

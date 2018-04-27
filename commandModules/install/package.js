@@ -12,13 +12,15 @@ function packageInstallHandler(argv) {
       .option('k', {alias: 'intallationkey', demandOption: false, desc: 'STRING: Installation key for installing a key-protected package. The default is null.'})
       .option('p', {alias: 'publishwait', demandOption: false, desc: 'MINUTES: Maximum number of minutes to wait for the Subscriber Package Version ID to become available in the target org before canceling the install request. The default is 0.'})
       .option('r', {alias: 'noprompt', demandOption: false, desc: 'FLAG: Allow Remote Site Settings and Content Security Policy websites to send or receive data without confirmation.'})
-      .option('json', {alias: 'json', demandOption: false, desc: 'FLAG: Format output as JSON.'})
+      .option('j', {alias: 'json', demandOption: false, type: 'boolean', desc: 'FLAG: Format output as JSON.'})
       .option('loglevel', {alias: 'loglevel', demandOption: false, desc: 'STRING: The logging level for this command invocation. Logs are stored in $HOME/.sfdx/sfdx.log. Permissible values are: trace, debug, info, warn, error, fatal. DEFAULT: error.'})
       
-    const options = Object.keys(yargs.getOptions().alias);
+    const options = yargs.getOptions().alias;
 
-    options.map(opt => {
-        if (yargs.argv[opt] != null) {
+    Object.keys(options).map(opt => {
+        if (yargs.argv[opt] === true) {
+            baseCommand += ` --${options[opt]}`;
+        } else if (yargs.argv[opt] != null) {
             baseCommand += ` -${opt} ${yargs.argv[opt]}`;
         }
     })
