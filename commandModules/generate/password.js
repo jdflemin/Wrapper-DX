@@ -1,20 +1,17 @@
 /**
- * @description installs package
- * @method packageInstallHandler
+ * @description generate user password
+ * @method generatePasswordHandler
  * @param {array} argv 
  */
-function packageInstallHandler(argv) {
-    let baseCommand = 'sfdx force:package:install';
+function generatePasswordHandler(argv) {
+    let baseCommand = 'sfdx force:user:password:generate';
     const yargs = require('yargs')
       .option('u', {alias: 'targetusername', demandOption: true, desc: 'STRING: A username or alias for the target org. Overrides the default target org.'})
-      .option('i', {alias: 'id', demandOption: true, desc: 'ID: The ID of the package version to install (starts with 04t).'})
-      .option('w', {alias: 'wait', demandOption: false, desc: 'MINUTES: Maximum number of minutes to wait for installation status. The default is 0.'})
-      .option('k', {alias: 'intallationkey', demandOption: false, desc: 'STRING: Installation key for installing a key-protected package. The default is null.'})
-      .option('p', {alias: 'publishwait', demandOption: false, desc: 'MINUTES: Maximum number of minutes to wait for the Subscriber Package Version ID to become available in the target org before canceling the install request. The default is 0.'})
-      .option('r', {alias: 'noprompt', demandOption: false, desc: 'FLAG: Allow Remote Site Settings and Content Security Policy websites to send or receive data without confirmation.'})
+      .option('v', {alias: 'targetdevhubusername', demandOption: false, desc: 'STRING: A username or alias for the target Dev Hub org. Overrides the default Dev Hub org.'})     
+      .option('o', {alias: 'onbehalfof', demandOption: false, desc: 'STRING: A comma-separated list of usernames for which to generate passwords.'})
       .option('j', {alias: 'json', demandOption: false, type: 'boolean', desc: 'FLAG: Format output as JSON.'})
       .option('loglevel', {alias: 'loglevel', demandOption: false, desc: 'STRING: The logging level for this command invocation. Logs are stored in $HOME/.sfdx/sfdx.log. Permissible values are: trace, debug, info, warn, error, fatal. DEFAULT: error.'})
-      
+
     const options = yargs.getOptions().alias;
 
     Object.keys(options).map(opt => {
@@ -42,5 +39,5 @@ function packageInstallHandler(argv) {
 
 // export module
 module.exports = {
-    handler: packageInstallHandler
+    handler: generatePasswordHandler
 };
