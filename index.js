@@ -36,7 +36,7 @@ function followYargs() {
       .command('push', 'Push command', require('./commandModules/push.js'))
       .command('query')
       .command('report')
-      .command('retrieve')
+      .command('retrieve', 'Retrieve command', require('./commandModules/retrieve.js'))
       .command('run')
       .command('set', 'Set command', require('./commandModules/set.js'))
       .command('upgrade')
