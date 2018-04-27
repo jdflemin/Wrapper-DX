@@ -11,7 +11,7 @@ exec(listDir, (err, stdout, stderr) => {
     console.log('Please navigate to your DX project and try again')
   }
 });
-  
+ 
 
 // console.log(process.platform);
 
@@ -42,29 +42,29 @@ TEMPLATED 1.2 – sfdx force:org:open -u
  */
 function followYargs() {
   const argv = require('yargs')
-  .usage('rsdx <command>')
-    .command('convert')
-    .command('create', 'create command', require('./commandModules/create.js'))
-    .command('delete')
-    .command('deploy')
-    .command('display')
-    .command('export')
-    .command('generate')
-    .command('get')
-    .command('import')
-    .command('install')
-    .command('list', 'use when a list is expected to be returned', require('./commandModules/list.js'))
-    .command('login')
-    .command('open', 'open command', require('./commandModules/open.js'))
-    .command('pull')
-    .command('push', 'push changes to scratch org', require('./commandModules/push.js'))
-    .command('query')
-    .command('report')
-    .command('retrieve')
-    .command('run')
-    .command('set')
-    .command('upgrade')
-  .help()
-  .argv
+    .usage('rsdx <command>')
+      .command('convert')
+      .command('create', 'create command', require('./commandModules/create.js'))
+      .command('delete')
+      .command('deploy')
+      .command('display')
+      .command('export')
+      .command('generate')
+      .command('get')
+      .command('import')
+      .command('install', 'Installs a package in the target org.', require('./commandModules/install.js'))
+      .command('list', 'use when a list is expected to be returned', require('./commandModules/list.js'))
+      .command('login')
+      .command('open', 'open command', require('./commandModules/open.js'))
+      .command('pull')
+      .command('push')
+      .command('query')
+      .command('report')
+      .command('retrieve')
+      .command('run')
+      .command('set')
+      .command('upgrade')
+    .help()
+    .argv
 }
 //"preinstall": "npm install --global sfdx-cli",

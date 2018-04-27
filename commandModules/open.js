@@ -14,9 +14,8 @@ function open(argv) {
         case ('SORG'):
             scratchOrg.handler(arguments);
             break;
-            
         default:
-            console.log("WHATEVER YOU'RE TRYING TO OPEN ISN'T RIGHT");
+            console.log("VALID OPTIONS: rsdx sorg -u <targetusername>");
             break;
     }
 

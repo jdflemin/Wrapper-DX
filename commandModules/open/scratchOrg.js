@@ -6,7 +6,7 @@
 function scratchOrgOpenHandler(argv) {
     let baseCommand = 'sfdx force:org:open';
     const yargs = require('yargs')
-      .option('u', {alias: 'targetusername', demandOption: false, desc: 'STRING: A username or alias for the target org. Overrides the default target org.'})
+      .option('u', {alias: 'targetusername', demandOption: true, desc: 'STRING: A username or alias for the target org. Overrides the default target org.'})
       .option('p', {alias: 'path', demandOption: false, desc: 'STRING: Navigation URL path (not including domain).'})
       .option('r', {alias: 'urlonly', demandOption: false, desc: 'FLAG: Displays a navigation URL, but doesn’t launch your browser.'})
       .option('json', {alias: 'json', demandOption: false, desc: 'FLAG: Format output as JSON.'})      
@@ -22,6 +22,8 @@ function scratchOrgOpenHandler(argv) {
             console.log("OPEN SCRATCH ORG: OPTION NOT INCLUDED")
         }
     })
+
+    console.log("OPTIONS: ", baseCommand)
 
     let exec = require('child_process').exec; 
 
