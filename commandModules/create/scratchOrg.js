@@ -9,7 +9,6 @@ function scratchOrgCreateHandler(argv) {
       .option('d', {alias: 'duration', demandOption: false, desc: 'default of 7 days, but can range from 1-30'})
       .option('h', {alias: 'DevHub', demandOption: true, desc: 'alias of parent DevHub to this Scratch Org'})
       .option('a', {alias: 'alias', demandOption: true, desc: 'alias name of this Scratch Org'})
-
     baseCommand += ` -f config/project-scratch-def.json -v ${yargs.argv.h} -a ${yargs.argv.a}`;
 
     if(yargs.argv.d) baseCommand += ` -d ${yargs.argv.d}`;
