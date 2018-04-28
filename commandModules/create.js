@@ -60,13 +60,13 @@ module.exports = {
 //  */
 // function create(fromIndex) {
 //     // all required create modules
-//     const scratchOrg = require('./create/scratchOrg.js');
+//     // const scratchOrg = require('./create/scratchOrg.js');
 
 //     console.log(fromIndex)
 //     console.log('hi')
 //     const argv = require('yargs')
 //         .usage('create <thing>')
-//         .command('sOrg', 'create sOrg', scratchOrg.handler())
+//         .command('sOrg', 'create sOrg', require('./create/scratchOrg.js').handler())
 //         .help()
 //     .argv
 //     // console.log(argv)

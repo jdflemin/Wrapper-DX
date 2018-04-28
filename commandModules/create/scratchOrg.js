@@ -31,8 +31,6 @@ module.exports = {
   handler: scratchOrgCreateHandler
 };
 
-
-// console.log('here')
 // /**
 //  * @description creates scratch org
 //  * @method scratchOrgCreateHandler
