@@ -39,7 +39,7 @@ function followYargs() {
       .command('retrieve', 'Retrieve command', require('./commandModules/retrieve.js'))
       .command('run')
       .command('set', 'Set command', require('./commandModules/set.js'))
-      .command('upgrade')
+      .command('upgrade', 'Upgrade commands', require('./commandModules/upgrade.js'))
     .help()
     .argv
 }
