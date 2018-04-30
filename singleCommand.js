@@ -1,49 +1,11 @@
-// checkProject = function () {
+#!/usr/bin/env node
+console.log('aaa')
 
-//   const listDir = process.platform === 'win32' ? 'dir' : 'ls -a';
+let sfdx = require('./index.js').checkProject();
+console.log('----', sfdx)
 
-//   // ensure we are in a sfdx project first
-//   let exec = require('child_process').exec; 
-//   exec(listDir, (err, stdout, stderr) => {
-//     if (stdout.includes('.forceignore')) {
-//       return true;
-//       // followYargs();
-//     } else {
-//       console.log('Please navigate to your DX project and try again')
-//       return true;
-//       // return false
-//     }
-//   });
-// }
-
-module.exports = {
-  checkProject: function() {
-    const listDir = process.platform === 'win32' ? 'dir' : 'ls -a';
-    console.log(listDir);
-    var returnValue;
-    // ensure we are in a sfdx project first
-    let exec = require('child_process').exec; 
-    exec(listDir, (err, stdout, stderr) => {
-      if (stdout.includes('.forceignore')) {
-        returnValue = true
-        return true;
-        // followYargs();
-      } else {
-        console.log('Please navigate to your DX project and try again')
-        returnValue = true
-        console.log(returnValue);
-        return true;
-        // returnValue = false
-      }
-    })
-    return returnValue;
-  }
-};
-// /**
-//  * @description router for commands after rsdx is called in terminal
-//  * @method followYargs
-//  */
-// function followYargs() {
+// if(sfdx()) {
+//     console.log('in if')
 //   const argv = require('yargs')
 //     .usage('rsdx <command>')
 //       .command('convert')
@@ -69,5 +31,6 @@ module.exports = {
 //       .command('upgrade', 'Upgrade commands', require('./commandModules/upgrade.js'))
 //     .help()
 //     .argv
+// } else {
+//     console.log('false')
 // }
-//"preinstall": "npm install --global sfdx-cli",

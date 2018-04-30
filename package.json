@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/jdflemin/RadialSparkDX#readme",
   "bin": {
-    "rsdx": "./index.js"
+    "rsdx": "./singleCommand.js"
   }
 }
