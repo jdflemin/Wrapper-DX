@@ -15,29 +15,56 @@
 //     }
 //   });
 // }
+let exec = require('child_process').exec;
+
+function checkProject() {
+  const listDir = process.platform === 'win32' ? 'dir' : 'ls -a';
+
+  let test = someFun(listDir);
+  
+  return test
+
+}
+
+function someFun(listDir) {
+  return new Promise((resolve, reject) => exec(listDir, (err, stdout, stderr) => {
+    if (stdout.includes('.forceignore')) {
+      resolve(true);
+      // return true;
+      // followYargs();
+    } else {
+      console.log('Please navigate to your DX project and try again')
+      resolve(true);
+      // return true;
+      // returnValue = false
+    }
+  })).then(res => {return res})
+}
+
 
 module.exports = {
-  checkProject: function() {
-    const listDir = process.platform === 'win32' ? 'dir' : 'ls -a';
-    console.log(listDir);
-    var returnValue;
-    // ensure we are in a sfdx project first
-    let exec = require('child_process').exec; 
-    exec(listDir, (err, stdout, stderr) => {
-      if (stdout.includes('.forceignore')) {
-        returnValue = true
-        return true;
-        // followYargs();
-      } else {
-        console.log('Please navigate to your DX project and try again')
-        returnValue = true
-        console.log(returnValue);
-        return true;
-        // returnValue = false
-      }
-    })
-    return returnValue;
-  }
+  handler: checkProject
+  // checkProject: function() {
+
+  //   console.log(listDir);
+  //   var returnValue;
+  //   // ensure we are in a sfdx project first
+  //   let exec = require('child_process').exec; 
+  //   exec(listDir, (err, stdout, stderr) => {
+  //     if (stdout.includes('.forceignore')) {
+  //       returnValue = true
+  //       return true;
+  //       // followYargs();
+  //     } else {
+  //       console.log('Please navigate to your DX project and try again')
+  //       returnValue = true
+  //       console.log(returnValue);
+  //       return true;
+  //       // returnValue = false
+  //     }
+  //   })
+  //   return returnValue;
+  // }
 };
 // /**
 //  * @description router for commands after rsdx is called in terminal

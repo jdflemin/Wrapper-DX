@@ -10,5 +10,7 @@ maps near exec methods abstracted out into utility class
 maps should use alias (aka long name with -- as some of our shorthands might conflict with sfdx commands) - example in delete scratchOrg
 exec method into utility as well? pending success and failure functionality
 
+got promise resolved for os check, might need to change the require and exports in the commandModules
+
 As of 4/25/18 npm install is needed followed by npm link
 working on solution in only run install
