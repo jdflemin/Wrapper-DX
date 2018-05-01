@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 console.log('aaa')
 
-let sfdx = require('./index.js').handler().then(res => projectChecked(res));
+let sfdx = require('./index.js').handler().then(res => projectChecked(res)).catch(err => console.log("RSDX ERR: ", err));
 
 
 console.log('----', sfdx)
