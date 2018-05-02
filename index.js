@@ -33,8 +33,7 @@ function someFun(listDir) {
       // return true;
       // followYargs();
     } else {
-      console.log('Please navigate to your DX project and try again')
-      resolve(true);
+      reject('Please navigate to your DX project and try again');
       // return true;
       // returnValue = false
     }
