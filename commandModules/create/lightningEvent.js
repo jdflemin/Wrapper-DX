@@ -1,7 +1,13 @@
 exports.lightningEvent = {
   command: 'lightningEvent',
   desc: 'creates a lighting component',
-  builder: {},
+	builder: (yargs) => yargs
+		.option('n', {
+			alias: 'name', 
+			desc: 'name of lightning event', 
+			type: 'string', 
+			demandOption: true
+		}),
   handler: (argv) => {
     console.log(argv);
     console.log('3333333333')

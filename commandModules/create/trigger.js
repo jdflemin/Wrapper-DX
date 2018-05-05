@@ -1,7 +1,25 @@
 exports.trigger = {
   command: 'trigger',
   desc: 'creates a new DX Project',
-  builder: {},
+	builder: (yargs) => yargs
+		.option('n', {
+			alias: 'triggerName', 
+			desc: 'name of trigger', 
+			type: 'string', 
+			demandOption: true
+		})
+   .option('s', {
+			alias: 'sObject', 
+			desc: 'name of sObject for trigger', 
+			type: 'string', 
+			demandOption: true
+		})
+    .option('e', {
+			alias: 'event for trigger', 
+			desc: 'event(s) for trigger to be fired', 
+			type: 'string', 
+			demandOption: true
+		}),
   handler: (argv) => {
     console.log(argv);
     console.log('3333333333')

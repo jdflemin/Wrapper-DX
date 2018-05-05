@@ -1,7 +1,13 @@
 exports.lightningApp = {
   command: 'lightningApp',
   desc: 'creates a lighting app',
-  builder: {},
+	builder: (yargs) => yargs
+	.option('n', {
+		alias: 'name', 
+		desc: 'name of lightning app', 
+		type: 'string', 
+		demandOption: true
+	}),
   handler: (argv) => {
     console.log(argv);
     console.log('3333333333')

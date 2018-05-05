@@ -1,7 +1,13 @@
 exports.dxProject = {
   command: 'dxProject',
   desc: 'creates a new DX Project',
-  builder: {},
+	builder: (yargs) => yargs
+		.option('n', {
+			alias: 'name', 
+			desc: 'name of sfdx project', 
+			type: 'string', 
+			demandOption: true
+		}),
   handler: (argv) => {
     console.log(argv);
     console.log('3333333333')

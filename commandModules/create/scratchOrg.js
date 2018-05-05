@@ -1,7 +1,25 @@
 exports.scratchOrg = {
   command: 'sOrg',
   desc: 'creates a new DX Project',
-  builder: {},
+	builder: (yargs) => yargs
+	.option('h', {
+		alias: 'DevHub', 
+		desc: 'alias of parent DevHub to this Scratch Org', 
+		type: 'string', 
+		demandOption: true
+	})
+	.option('a', {
+		alias: 'alias', 
+		desc: 'alias name of this Scratch Org', 
+		type: 'string', 
+		demandOption: true
+	})
+	.option('d', {
+		alias: 'duration', 
+		desc: 'default of 7 days, but can range from 1-30', 
+		type: 'number', 
+		demandOption: false
+	}),
   handler: (argv) => {
     console.log(argv);
     console.log('3333333333')
@@ -37,6 +55,9 @@ exports.scratchOrg = {
 //     });
 
 // }
+
+
+
 
 // // export module
 // module.exports = {
