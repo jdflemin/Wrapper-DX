@@ -11,14 +11,20 @@ function scratchOrgDeleteHandler(argv) {
       .option('v', {alias: 'targetdevhubusername', demandOption: false, desc: 'STRING: A username or alias for the target Dev Hub org. Overrides the default Dev Hub org.'})
       .option('j', {alias: 'json', demandOption: false, type:'boolean', desc: 'FLAG: Format output as JSON.'})      
       .option('loglevel', {alias: 'loglevel', demandOption: false, desc: 'STRING: The logging level for this command invocation. Logs are stored in $HOME/.sfdx/sfdx.log. Permissible values are: trace, debug, info, warn, error, fatal. DEFAULT: error.'})
+      const options = yargs.getOptions().alias;
 
     Object.keys(options).map(opt => {
-        console.log(typeof yargs.argv[opt])
-        if (yargs.argv[opt] === true) {
+        // if (yargs.argv[opt] === true) {
+        //     baseCommand += ` --${options[opt]}`;
+        // } else if (yargs.argv[opt] != null && typeof yargs.argv[opt] != 'boolean') {
+        //     baseCommand += ` -${opt} ${yargs.argv[opt]}`;
+        // }
+        if (yargs.argv[opt] != null && typeof yargs.argv[opt] != 'boolean') {
+            baseCommand += ` --${options[opt]} ${yargs.argv[opt]}`;
+        } else if (yargs.argv[opt] === true) {
             baseCommand += ` --${options[opt]}`;
-        } else if (yargs.argv[opt] != null && typeof yargs.argv[opt] != 'boolean') {
-            baseCommand += ` -${opt} ${yargs.argv[opt]}`;
         }
+
     })
 
     console.log("RUNNING COMMAND: ", baseCommand);
