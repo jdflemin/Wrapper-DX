@@ -1,17 +1,18 @@
 /**
- * @description deletes scratch org
- * @method scratchOrgDeleteHandler
+ * @description Lists changes that have been made locally, in a scratch org, or both.
+ * @method getSourceStatusHandler
  * @param {array} argv 
  */
-function scratchOrgDeleteHandler(argv) {
-    let baseCommand = 'sfdx force:org:delete';
+function getSourceStatusHandler(argv) {
+    let baseCommand = 'sfdx force:source:status';
     const yargs = require('yargs')
-      .option('u', {alias: 'targetusername', demandOption: true, desc: 'STRING: A username or alias for the target org.'})
-      .option('p', {alias: 'noprompt', demandOption: false, desc: 'FLAG: No prompt to confirm deletion.'})
-      .option('v', {alias: 'targetdevhubusername', demandOption: false, desc: 'STRING: A username or alias for the target Dev Hub org. Overrides the default Dev Hub org.'})
-      .option('j', {alias: 'json', demandOption: false, type:'boolean', desc: 'FLAG: Format output as JSON.'})      
+      .option('u', {alias: 'targetusername', demandOption: true, desc: 'STRING: A username or alias for the target org. Overrides the default target org.'})
+      .option('a', {alias: 'all', demandOption: false, type: 'boolean', desc: 'FLAG: Lists all the changes that have been made.'})
+      .option('l', {alias: 'local', demandOption: false, type: 'boolean', desc: 'FLAG: Lists the changes that have been made locally.'})
+      .option('r', {alias: 'remote', demandOption: false, type: 'boolean', desc: 'FLAG: Lists the changes that have been made in the scratch org.'})
+      .option('j', {alias: 'json', demandOption: false, type: 'boolean', desc: 'FLAG: Format output as JSON.'})
       .option('loglevel', {alias: 'loglevel', demandOption: false, desc: 'STRING: The logging level for this command invocation. Logs are stored in $HOME/.sfdx/sfdx.log. Permissible values are: trace, debug, info, warn, error, fatal. DEFAULT: error.'})
-      
+
     const options = yargs.getOptions().alias;
 
     Object.keys(options).map(opt => {
@@ -39,5 +40,5 @@ function scratchOrgDeleteHandler(argv) {
 
 // export module
 module.exports = {
-    handler: scratchOrgDeleteHandler
+    handler: getSourceStatusHandler
 };

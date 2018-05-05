@@ -1,12 +1,13 @@
 /**
- * @description set config
- * @method setConfigHandler
+ * @description Converts metadata retrieved via Metadata API into the source format used in Salesforce DX projects.
+ * @method convertMetadataHandler
  * @param {array} argv 
  */
-function setConfigHandler(argv) {
-    let baseCommand = 'sfdx force:config:set';
+function convertMetadataHandler(argv) {
+    let baseCommand = 'sfdx force:mdapi:convert';
     const yargs = require('yargs')
-        .option('g', {alias: 'global', demandOption: false, desc: 'FLAG: Sets the configuration variables globally, so they can be used from any directory.'})
+        .option('r', {alias: 'rootdir', demandOption: true, desc: 'DIRECTORY: The root directory that contains the metadata you retrieved using Metadata API.'})
+        .option('d', {alias: 'outputdir', demandOption: true, desc: 'DIRECTORY: The directory to store your source in after it’s converted to the Salesforce DX format. Can be an absolute or relative path.'})
         .option('j', {alias: 'json', demandOption: false, type: 'boolean', desc: 'FLAG: Format output as JSON.'})
         .option('loglevel', {alias: 'loglevel', demandOption: false, desc: 'STRING: The logging level for this command invocation. Logs are stored in $HOME/.sfdx/sfdx.log. Permissible values are: trace, debug, info, warn, error, fatal. DEFAULT: error.'})
 
@@ -25,17 +26,17 @@ function setConfigHandler(argv) {
     let exec = require('child_process').exec; 
 
     exec(baseCommand, (err, stdout, stderr) => {
-      if (err) {
+        if (err) {
         // err stuff
-      } else {
+        } else {
         // not err stuff
-      }
-      // happen regardless stuff
+        }
+        // happen regardless stuff
     });
-    
-}
 
-// export module
-module.exports = {
-    handler: setConfigHandler
+    }
+
+    // export module
+    module.exports = {
+    handler: convertMetadataHandler
 };
