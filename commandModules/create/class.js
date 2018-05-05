@@ -1,14 +1,20 @@
-  exports.class = {
-    command: 'class',
-    desc: 'class',
-    builder: {},
-    handler: (argv) => {
-      console.log(argv);
-      console.log('3333333333')
-      argv._handled = true
-      console.log('create class exec call')
-    }
-  }
+exports.class = {
+	command: 'class',
+	desc: 'class',
+	builder: (yargs) => yargs
+		.option('n', {
+			alias: 'className', 
+			desc: 'name of class', 
+			type: 'string', 
+			demandOption: true
+		}),
+	handler: (argv) => {
+		console.log(argv);
+		console.log('3333333333')
+		argv._handled = true
+		console.log('create class exec call')
+	}
+}
 
 
 
